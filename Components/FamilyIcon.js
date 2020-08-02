@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
 
 class FamilyIcon extends React.Component {
 	render() {
-		const { image, onPress } = this.props;
+		const { image } = this.props;
 		return (
-			<TouchableOpacity style={styles.container} onPress={onPress}>
+			<TouchableOpacity style={styles.container}>
 				<Image source={image} style={styles.image} />
 			</TouchableOpacity>
 		);
@@ -13,8 +13,14 @@ class FamilyIcon extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	container: { flex: 1, backgroundColor: "blue", width: 500, height: 100 },
-	image: {},
+	container: {},
+	image: {
+		height: Dimensions.get("window").width / 2.6,
+		width: Dimensions.get("window").width / 2.6,
+		borderRadius: 100,
+		borderColor: "#000000",
+		borderWidth: 5,
+	},
 });
 
 export default FamilyIcon;

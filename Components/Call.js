@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
-import FamilyIcon from "./FamilyIcon";
+import { StyleSheet } from "react-native";
+
+import FamilyGrid from "./FamilyGrid";
 
 class Call extends React.Component {
 	constructor(props) {
@@ -8,24 +9,11 @@ class Call extends React.Component {
 		this.state = {};
 	}
 
-	_call() {}
-
 	render() {
-		return (
-			<SafeAreaView styles={styles.screen_container}>
-				<FamilyIcon
-					image={require("../Images/ic_message.png")}
-					onPress={this._call}
-				/>
-			</SafeAreaView>
-		);
+		return <FamilyGrid />;
 	}
 }
 
-const styles = StyleSheet.create({
-	screen_container: {
-		flex: 1,
-	},
-});
+const styles = StyleSheet.create({});
 
 export default Call;
