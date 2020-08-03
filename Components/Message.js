@@ -6,13 +6,12 @@ import {
 	Image,
 	Dimensions,
 } from "react-native";
-import Toast from "react-native-easy-toast";
 
 import FamilyGrid from "./FamilyGrid";
 
 class Message extends React.Component {
 	_sendMessagetoAll() {
-		this.refs.toast.show("Messages envoyés à toute la famille.", 1000);
+		alert("Messages envoyés à toute la famille.");
 	}
 
 	_displaySendAllButton() {
@@ -30,9 +29,8 @@ class Message extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<FamilyGrid type='message' />
 				{this._displaySendAllButton()}
-				<Toast ref='toast' />
+				<FamilyGrid type='message' />
 			</View>
 		);
 	}

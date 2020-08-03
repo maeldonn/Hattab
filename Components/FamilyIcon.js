@@ -2,7 +2,9 @@ import React from "react";
 import { StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
 
 class FamilyIcon extends React.Component {
-	_sendMessage() {}
+	_sendMessage() {
+		alert("Message envoyé. DEV = " + __DEV__.toString());
+	}
 
 	_call() {}
 
