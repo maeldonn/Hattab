@@ -1,19 +1,12 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import {} from "react-native";
 
 import FamilyGrid from "./FamilyGrid";
 
 class Call extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-
 	render() {
-		return <FamilyGrid />;
+		return <FamilyGrid type='call' />;
 	}
 }
-
-const styles = StyleSheet.create({});
 
 export default Call;

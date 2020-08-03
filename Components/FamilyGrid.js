@@ -11,6 +11,7 @@ import FamilyIcon from "./FamilyIcon";
 
 class FamilyGrid extends React.Component {
 	render() {
+		const { type } = this.props;
 		return (
 			<SafeAreaView style={styles.main_container}>
 				<View style={styles.logo_container}>
@@ -21,12 +22,28 @@ class FamilyGrid extends React.Component {
 				</View>
 				<View style={styles.grid}>
 					<View style={styles.first_row}>
-						<FamilyIcon image={require("../Images/ic_mael.jpeg")} />
-						<FamilyIcon image={require("../Images/ic_nolwenn.jpeg")} />
+						<FamilyIcon
+							image={require("../Images/ic_mael.jpeg")}
+							number='0686045973'
+							type={type}
+						/>
+						<FamilyIcon
+							image={require("../Images/ic_nolwenn.jpeg")}
+							number='0786928037'
+							type={type}
+						/>
 					</View>
 					<View style={styles.second_row}>
-						<FamilyIcon image={require("../Images/ic_armel.jpeg")} />
-						<FamilyIcon image={require("../Images/ic_patrick.jpeg")} />
+						<FamilyIcon
+							image={require("../Images/ic_armel.jpeg")}
+							number='0640187857'
+							type={type}
+						/>
+						<FamilyIcon
+							image={require("../Images/ic_patrick.jpeg")}
+							number='0684506138'
+							type={type}
+						/>
 					</View>
 				</View>
 			</SafeAreaView>

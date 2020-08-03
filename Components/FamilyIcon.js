@@ -2,10 +2,29 @@ import React from "react";
 import { StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
 
 class FamilyIcon extends React.Component {
+	_sendMessage() {}
+
+	_call() {}
+
+	_doAction() {
+		switch (this.props.type) {
+			case "call":
+				this._call();
+				break;
+			case "message":
+				this._sendMessage();
+				break;
+			default:
+				break;
+		}
+	}
+
 	render() {
 		const { image } = this.props;
 		return (
-			<TouchableOpacity style={styles.container}>
+			<TouchableOpacity
+				style={styles.container}
+				onPress={() => this._doAction()}>
 				<Image source={image} style={styles.image} />
 			</TouchableOpacity>
 		);
