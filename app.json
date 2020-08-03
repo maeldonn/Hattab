@@ -17,10 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maeldonn.Hattab"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "android": {
+      "package": "com.maeldonn.Hattab"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
