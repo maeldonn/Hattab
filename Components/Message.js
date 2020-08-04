@@ -5,13 +5,16 @@ import {
 	TouchableOpacity,
 	Image,
 	Dimensions,
+	Alert,
 } from "react-native";
 
 import FamilyGrid from "./FamilyGrid";
 
 class Message extends React.Component {
 	_sendMessagetoAll() {
-		alert("Messages envoyés à toute la famille.");
+		Alert.alert("Messages envoyés à toute la famille.", "", [{ text: "OK" }], {
+			cancelable: false,
+		});
 	}
 
 	_displaySendAllButton() {
@@ -29,8 +32,8 @@ class Message extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				{this._displaySendAllButton()}
 				<FamilyGrid type='message' />
+				{this._displaySendAllButton()}
 			</View>
 		);
 	}

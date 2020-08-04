@@ -1,14 +1,29 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Dimensions } from "react-native";
+import {
+	StyleSheet,
+	Image,
+	TouchableOpacity,
+	Dimensions,
+	Alert,
+} from "react-native";
+
+import EnlargeShrink from "../Animations/EnlargeShrink";
 
 class FamilyIcon extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			shouldEnlarge: false,
+		};
+	}
 	_sendMessage() {
-		alert("Message envoyé. DEV = " + __DEV__.toString());
+		Alert.alert("Message envoyé.", "", [{ text: "OK" }], { cancelable: false });
 	}
 
 	_call() {}
 
 	_doAction() {
+		this.setState({ shouldEnlarge: true });
 		switch (this.props.type) {
 			case "call":
 				this._call();
@@ -24,20 +39,23 @@ class FamilyIcon extends React.Component {
 	render() {
 		const { image } = this.props;
 		return (
-			<TouchableOpacity
-				style={styles.container}
-				onPress={() => this._doAction()}>
-				<Image source={image} style={styles.image} />
-			</TouchableOpacity>
+			<EnlargeShrink shouldEnlarge={this.state.shouldEnlarge}>
+				<TouchableOpacity
+					style={styles.container}
+					onPress={() => this._doAction()}>
+					<Image source={image} style={styles.image} />
+				</TouchableOpacity>
+			</EnlargeShrink>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	container: {},
+	container: { flex: 1 },
 	image: {
-		height: Dimensions.get("window").width / 2.6,
-		width: Dimensions.get("window").width / 2.6,
+		flex: 1,
+		height: null,
+		width: null,
 		borderRadius: 100,
 		borderColor: "#000000",
 		borderWidth: 5,

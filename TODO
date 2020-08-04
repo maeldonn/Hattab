@@ -3,10 +3,12 @@
 ############
 
 * Mauvaise affichage sur Android ❌
-* Enlever le titre des alert() ❌
-* Ajouter une animation lors d'un appui ❌
+* Enlever le titre des alert() ✅
+* Ajouter une animation lors d'un appui ✅
 * Ajouter un splash screen ❌
 * Ajouter un icon ❌
+* Ajouter une animation sur Panpan
+* Résoudre le problème du undefined sur enlargeShrink
 
 Légende :
 
