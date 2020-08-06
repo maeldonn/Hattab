@@ -1,5 +1,3 @@
-// Animations/EnlargeShrink.js
-
 import React from "react";
 import { Animated, Dimensions } from "react-native";
 
@@ -19,16 +17,10 @@ class EnlargeShrink extends React.Component {
 	}
 
 	componentDidUpdate() {
-		Animated.sequence([
-			Animated.spring(this.state.viewSize, {
-				toValue: this._getSize(),
-				useNativeDriver: false,
-			}),
-			Animated.spring(this.state.viewSize, {
-				toValue: Dimensions.get("window").width / 2.6,
-				useNativeDriver: false,
-			}),
-		]).start();
+		Animated.spring(this.state.viewSize, {
+			toValue: this._getSize(),
+			useNativeDriver: false,
+		}).start();
 	}
 
 	render() {

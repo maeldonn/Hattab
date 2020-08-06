@@ -1,11 +1,5 @@
 import React from "react";
-import {
-	StyleSheet,
-	Image,
-	TouchableOpacity,
-	Dimensions,
-	Alert,
-} from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
 
 import EnlargeShrink from "../Animations/EnlargeShrink";
 
@@ -23,7 +17,10 @@ class FamilyIcon extends React.Component {
 	_call() {}
 
 	_doAction() {
-		this.setState({ shouldEnlarge: true });
+		this._toggleShouldEnlarge();
+		setTimeout(() => {
+			this._toggleShouldEnlarge();
+		}, 1000);
 		switch (this.props.type) {
 			case "call":
 				this._call();
@@ -36,8 +33,18 @@ class FamilyIcon extends React.Component {
 		}
 	}
 
+	_toggleShouldEnlarge = () => {
+		const shouldEnlarge = this.state.shouldEnlarge;
+		if (shouldEnlarge == true) {
+			this.setState({ shouldEnlarge: false });
+		} else {
+			this.setState({ shouldEnlarge: true });
+		}
+	};
+
 	render() {
 		const { image } = this.props;
+		console.log(this.state.shouldEnlarge);
 		return (
 			<EnlargeShrink shouldEnlarge={this.state.shouldEnlarge}>
 				<TouchableOpacity
