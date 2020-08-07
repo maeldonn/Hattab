@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
 	logo: {
 		width: Dimensions.get("window").width - 20,
 		height: Dimensions.get("window").height / 5,
+		marginTop: 10,
 		resizeMode: "contain",
 	},
 	grid: { flex: 4, justifyContent: "space-around" },

@@ -2,19 +2,26 @@
 #   TODO   #
 ############
 
+-------------
+--   BUG   --
+-------------
+
 * Mauvaise affichage sur Android ❌
-* Enlever le titre des alert() ✅
-* Ajouter une animation lors d'un appui ✅
+* L'animation de Papan est cassée ❌
+* Passer le composant qui s'anim au Premier plan (confilt panpan) ❌
+* Mieux centrer Panpan ❌
+
+
+-----------------
+--   A FAIRE   --
+-----------------
+
 * Ajouter un splash screen ❌
 * Ajouter un icon ❌
-* Ajouter une animation sur Panpan ( comme enlarge shrink mais
-avec image qui tourne au milieu => enlargeRotateShrink) ❌
-* Résoudre le problème du undefined sur enlargeShrink ✅
-*Passer le composant qui s'anim au Premier plan (confilt panpan) ❌
-* Mieux centrer Panpan ❌
+* Optimiser les composants ❌
+* Hattab trop prêt du bord sur Android (marginTop) ✅
 * Appel et sms ❌
-* Hattab trop prêt du bord sur Android (marginTop) ❌
-* Panpan devient une FamilyGrid
+
 
 Légende :
 
