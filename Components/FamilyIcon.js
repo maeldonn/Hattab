@@ -44,7 +44,6 @@ class FamilyIcon extends React.Component {
 
 	render() {
 		const { image } = this.props;
-		console.log(this.state.shouldEnlarge);
 		return (
 			<EnlargeShrink shouldEnlarge={this.state.shouldEnlarge}>
 				<TouchableOpacity

@@ -9,9 +9,30 @@ import {
 } from "react-native";
 
 import FamilyGrid from "./FamilyGrid";
+import PanPanAnimation from "../Animations/PanpanAnimation";
 
 class Message extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			shouldAnim: false,
+		};
+	}
+
+	_toggleShouldAnim = () => {
+		const shouldAnim = this.state.shouldAnim;
+		if (shouldAnim == true) {
+			this.setState({ shouldAnim: false });
+		} else {
+			this.setState({ shouldAnim: true });
+		}
+	};
+
 	_sendMessagetoAll() {
+		this._toggleShouldAnim();
+		setTimeout(() => {
+			this._toggleShouldAnim();
+		}, 1000);
 		Alert.alert("Messages envoyés à toute la famille.", "", [{ text: "OK" }], {
 			cancelable: false,
 		});
@@ -19,14 +40,16 @@ class Message extends React.Component {
 
 	_displaySendAllButton() {
 		return (
-			<TouchableOpacity
-				style={styles.all_button}
-				onPress={() => this._sendMessagetoAll()}>
-				<Image
-					source={require("../Images/ic_panpan.jpeg")}
-					style={styles.image}
-				/>
-			</TouchableOpacity>
+			<PanPanAnimation shouldAnim={this.state.shouldAnim}>
+				<TouchableOpacity
+					style={styles.all_button}
+					onPress={() => this._sendMessagetoAll()}>
+					<Image
+						source={require("../Images/ic_panpan.jpeg")}
+						style={styles.image}
+					/>
+				</TouchableOpacity>
+			</PanPanAnimation>
 		);
 	}
 	render() {
@@ -42,13 +65,12 @@ class Message extends React.Component {
 const styles = StyleSheet.create({
 	container: { flex: 1 },
 	all_button: {
-		position: "absolute",
-		top: Dimensions.get("window").height / 2,
-		alignSelf: "center",
+		flex: 1,
 	},
 	image: {
-		height: Dimensions.get("window").width / 5,
-		width: Dimensions.get("window").width / 5,
+		flex: 1,
+		height: null,
+		width: null,
 		borderRadius: 100,
 		borderColor: "#000000",
 		borderWidth: 3,

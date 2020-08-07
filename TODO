@@ -10,6 +10,11 @@
 * Ajouter une animation sur Panpan ( comme enlarge shrink mais
 avec image qui tourne au milieu => enlargeRotateShrink) ❌
 * Résoudre le problème du undefined sur enlargeShrink ✅
+*Passer le composant qui s'anim au Premier plan (confilt panpan) ❌
+* Mieux centrer Panpan ❌
+* Appel et sms ❌
+* Hattab trop prêt du bord sur Android (marginTop) ❌
+* Panpan devient une FamilyGrid
 
 Légende :
 
