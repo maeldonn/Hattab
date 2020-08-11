@@ -1,7 +1,16 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
+import {
+	StyleSheet,
+	Image,
+	TouchableOpacity,
+	Alert,
+	Platform,
+	ToastAndroid,
+} from "react-native";
 
 import EnlargeShrink from "../Animations/EnlargeShrink";
+
+import SendSMS from "react-native-sms-x";
 
 class FamilyIcon extends React.Component {
 	constructor(props) {
@@ -10,11 +19,35 @@ class FamilyIcon extends React.Component {
 			shouldEnlarge: false,
 		};
 	}
+
 	_sendMessage() {
-		Alert.alert("Message envoyé.", "", [{ text: "OK" }], { cancelable: false });
+		if (Platform.OS === "android") {
+			// TODO : Demander permission à l'utilisateur pour android récent
+			SendSMS.send(10, this.props.number, "HATTAB ! On mange.", () => {});
+			ToastAndroid.show(
+				"Message envoyé à " + this.props.name + ".",
+				ToastAndroid.LONG
+			);
+		} else {
+			// TODO : Traiter l'envoie de message sur ios
+			Alert.alert(
+				"Message envoyé à " + this.props.name + ".",
+				"",
+				[{ text: "OK" }],
+				{
+					cancelable: false,
+				}
+			);
+		}
 	}
 
-	_call() {}
+	_call() {
+		if (Platform.OS === "android") {
+			// Traiter les appels sur android
+		} else {
+			// TODO : Traiter les appels sur ios
+		}
+	}
 
 	_doAction() {
 		this._toggleShouldEnlarge();

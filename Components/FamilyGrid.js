@@ -25,11 +25,13 @@ class FamilyGrid extends React.Component {
 						<FamilyIcon
 							image={require("../Images/ic_mael.jpeg")}
 							number='0686045973'
+							name='Maël'
 							type={type}
 						/>
 						<FamilyIcon
 							image={require("../Images/ic_nolwenn.jpeg")}
 							number='0786928037'
+							name='Nolwenn'
 							type={type}
 						/>
 					</View>
@@ -37,11 +39,13 @@ class FamilyGrid extends React.Component {
 						<FamilyIcon
 							image={require("../Images/ic_armel.jpeg")}
 							number='0640187857'
+							name='Armel'
 							type={type}
 						/>
 						<FamilyIcon
 							image={require("../Images/ic_patrick.jpeg")}
 							number='0684506138'
+							name='Patrick'
 							type={type}
 						/>
 					</View>

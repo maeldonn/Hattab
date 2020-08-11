@@ -4,12 +4,15 @@ import {
 	View,
 	TouchableOpacity,
 	Image,
-	Dimensions,
 	Alert,
+	Platform,
+	ToastAndroid,
 } from "react-native";
 
 import FamilyGrid from "./FamilyGrid";
 import PanPanAnimation from "../Animations/PanpanAnimation";
+
+import SendSMS from "react-native-sms-x";
 
 class Message extends React.Component {
 	constructor(props) {
@@ -33,9 +36,19 @@ class Message extends React.Component {
 		setTimeout(() => {
 			this._toggleShouldAnim();
 		}, 1000);
-		Alert.alert("Messages envoyés à toute la famille.", "", [{ text: "OK" }], {
-			cancelable: false,
-		});
+		if (Platform.OS === "android") {
+			// TODO : Demander permission à l'utilisateur pour android récent
+			SendSMS.send(10, this.props.number, "HATTAB ! On mange.", () => {});
+			ToastAndroid.show(
+				"Message envoyé à toute la famille.",
+				ToastAndroid.LONG
+			);
+		} else {
+			// TODO : Traiter l'envoie de message sur ios
+			Alert.alert("Message envoyé à toute la famille.", "", [{ text: "OK" }], {
+				cancelable: false,
+			});
+		}
 	}
 
 	_displaySendAllButton() {
@@ -53,6 +66,7 @@ class Message extends React.Component {
 		);
 	}
 	render() {
+		// TODO : Passer le composant qui s'anime au premier plan
 		return (
 			<View style={styles.container}>
 				<FamilyGrid type='message' />

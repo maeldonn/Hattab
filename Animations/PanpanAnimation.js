@@ -2,6 +2,7 @@ import React from "react";
 import { Animated, Dimensions, StyleSheet, Easing } from "react-native";
 
 class EnlargeShrink extends React.Component {
+	// TODO : Faire fonctionner correctement l'animation
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -29,7 +30,7 @@ class EnlargeShrink extends React.Component {
 			}),
 			Animated.timing(this.state.spinValue, {
 				toValue: 1,
-				duration: 3000,
+				duration: 1000,
 				easing: Easing.linear,
 				useNativeDriver: false,
 			}),
@@ -60,7 +61,7 @@ class EnlargeShrink extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		position: "absolute",
-		top: Dimensions.get("window").height / 2,
+		top: Dimensions.get("window").height / 1.9, // TODO : Bien centrer Panpan
 		alignSelf: "center",
 	},
 });
