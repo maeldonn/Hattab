@@ -29,6 +29,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.someone.sendsms.SendSMSPackage;
+import com.github.wumke.RNImmediatePhoneCall.RNImmediatePhoneCallPackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(

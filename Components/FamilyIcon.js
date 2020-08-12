@@ -11,6 +11,7 @@ import {
 import EnlargeShrink from "../Animations/EnlargeShrink";
 
 import SendSMS from "react-native-sms-x";
+import RNImmediatePhoneCall from "react-native-immediate-phone-call";
 
 class FamilyIcon extends React.Component {
 	constructor(props) {
@@ -23,7 +24,7 @@ class FamilyIcon extends React.Component {
 	_sendMessage() {
 		if (Platform.OS === "android") {
 			// TODO : Demander permission à l'utilisateur pour android récent
-			SendSMS.send(10, this.props.number, "HATTAB ! On mange.", () => {});
+			SendSMS.send(5, this.props.number, "HATTAB ! On mange.", () => {});
 			ToastAndroid.show(
 				"Message envoyé à " + this.props.name + ".",
 				ToastAndroid.LONG
@@ -43,7 +44,7 @@ class FamilyIcon extends React.Component {
 
 	_call() {
 		if (Platform.OS === "android") {
-			// Traiter les appels sur android
+			RNImmediatePhoneCall.immediatePhoneCall(this.props.number);
 		} else {
 			// TODO : Traiter les appels sur ios
 		}

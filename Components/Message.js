@@ -38,16 +38,24 @@ class Message extends React.Component {
 		}, 1000);
 		if (Platform.OS === "android") {
 			// TODO : Demander permission à l'utilisateur pour android récent
-			SendSMS.send(10, this.props.number, "HATTAB ! On mange.", () => {});
+			SendSMS.send(1, "0686045973", "HATTAB ! On mange.", () => {});
+			SendSMS.send(2, "0786928037", "HATTAB ! On mange.", () => {});
+			SendSMS.send(3, "0640187857", "HATTAB ! On mange.", () => {});
+			SendSMS.send(4, "0684506138", "HATTAB ! On mange.", () => {});
 			ToastAndroid.show(
-				"Message envoyé à toute la famille.",
+				"Messages envoyés à toute la famille.",
 				ToastAndroid.LONG
 			);
 		} else {
 			// TODO : Traiter l'envoie de message sur ios
-			Alert.alert("Message envoyé à toute la famille.", "", [{ text: "OK" }], {
-				cancelable: false,
-			});
+			Alert.alert(
+				"Messages envoyés à toute la famille.",
+				"",
+				[{ text: "OK" }],
+				{
+					cancelable: false,
+				}
+			);
 		}
 	}
 
