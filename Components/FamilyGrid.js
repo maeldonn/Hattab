@@ -5,6 +5,7 @@ import {
 	Image,
 	SafeAreaView,
 	Dimensions,
+	StatusBar,
 } from "react-native";
 
 import FamilyIcon from "./FamilyIcon";
@@ -14,6 +15,7 @@ class FamilyGrid extends React.Component {
 		const { type } = this.props;
 		return (
 			<SafeAreaView style={styles.main_container}>
+				<StatusBar barStyle='dark-content' />
 				<View style={styles.logo_container}>
 					<Image
 						source={require("../Images/ic_logo.png")}
