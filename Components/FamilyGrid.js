@@ -15,7 +15,7 @@ class FamilyGrid extends React.Component {
 		const { type } = this.props;
 		return (
 			<SafeAreaView style={styles.main_container}>
-				<StatusBar barStyle='dark-content' />
+				<StatusBar barStyle='dark-content' backgroundColor='#FFFFFF' />
 				<View style={styles.logo_container}>
 					<Image
 						source={require("../Images/ic_logo.png")}

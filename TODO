@@ -9,13 +9,12 @@
 * L'animation de Panpan est cassée ❌
 * Passer le composant qui s'anim au Premier plan (confilt panpan) ❌
 
-
 -----------------
 --   A FAIRE   --
 -----------------
 
-* Configurer eslint et prettier ❌
 * Ajouter un splash screen ❌
+* Configurer eslint et prettier ❌
 * Appel et sms pour ios ❌
 * Demander permission ( react native permissions voir les issues de sms) ❌
 
