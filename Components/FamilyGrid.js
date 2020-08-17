@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -6,9 +6,10 @@ import {
   SafeAreaView,
   Dimensions,
   StatusBar,
-} from "react-native";
+} from 'react-native';
+import PropTypes from 'prop-types';
 
-import FamilyIcon from "./FamilyIcon";
+import FamilyIcon from './FamilyIcon';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class FamilyGrid extends React.Component {
@@ -19,20 +20,20 @@ class FamilyGrid extends React.Component {
         <StatusBar barStyle="dark-content" />
         <View style={styles.logo_container}>
           <Image
-            source={require("../Images/ic_logo.png")}
+            source={require('../Images/ic_logo.png')}
             style={styles.logo}
           />
         </View>
         <View style={styles.grid}>
           <View style={styles.first_row}>
             <FamilyIcon
-              image={require("../Images/ic_mael.jpeg")}
+              image={require('../Images/ic_mael.jpeg')}
               number="0686045973"
               name="Maël"
               type={type}
             />
             <FamilyIcon
-              image={require("../Images/ic_nolwenn.jpeg")}
+              image={require('../Images/ic_nolwenn.jpeg')}
               number="0786928037"
               name="Nolwenn"
               type={type}
@@ -40,13 +41,13 @@ class FamilyGrid extends React.Component {
           </View>
           <View style={styles.second_row}>
             <FamilyIcon
-              image={require("../Images/ic_armel.jpeg")}
+              image={require('../Images/ic_armel.jpeg')}
               number="0640187857"
               name="Armel"
               type={type}
             />
             <FamilyIcon
-              image={require("../Images/ic_patrick.jpeg")}
+              image={require('../Images/ic_patrick.jpeg')}
               number="0684506138"
               name="Patrick"
               type={type}
@@ -58,23 +59,27 @@ class FamilyGrid extends React.Component {
   }
 }
 
+FamilyGrid.propTypes = {
+  type: PropTypes.string.isRequired,
+};
+
 const styles = StyleSheet.create({
   main_container: { flex: 1 },
-  logo_container: { flex: 1, alignItems: "center" },
+  logo_container: { flex: 1, alignItems: 'center' },
   logo: {
-    width: Dimensions.get("window").width - 20,
-    height: Dimensions.get("window").height / 5,
+    width: Dimensions.get('window').width - 20,
+    height: Dimensions.get('window').height / 5,
     marginTop: 10,
-    resizeMode: "contain",
+    resizeMode: 'contain',
   },
-  grid: { flex: 4, justifyContent: "space-around" },
+  grid: { flex: 4, justifyContent: 'space-around' },
   first_row: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   second_row: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
 

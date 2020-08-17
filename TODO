@@ -15,7 +15,8 @@ plan (confilt panpan) ❌
 -----------------
 
 * Ajouter un splash screen ❌
-* Configurer eslint et prettier ❌
+* Prettier avec react
+* Corriger erreur eslint ❌
 * Appel et sms pour ios ❌
 * Demander permission ( react native 
 permissions voir les issues de sms) ❌

@@ -1,5 +1,5 @@
-import React from "react";
-import { Animated, Dimensions, StyleSheet, Easing } from "react-native";
+import React from 'react';
+import { Animated, Dimensions, StyleSheet, Easing } from 'react-native';
 
 class EnlargeShrink extends React.Component {
   // TODO : Faire fonctionner correctement l'animation
@@ -11,15 +11,15 @@ class EnlargeShrink extends React.Component {
     };
     this.spin = this.state.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ["0deg", "360deg"],
+      outputRange: ['0deg', '360deg'],
     });
   }
 
   _getSize() {
     if (this.props.shouldAnim) {
-      return Dimensions.get("window").width / 3;
+      return Dimensions.get('window').width / 3;
     }
-    return Dimensions.get("window").width / 5;
+    return Dimensions.get('window').width / 5;
   }
 
   componentDidUpdate() {
@@ -37,7 +37,7 @@ class EnlargeShrink extends React.Component {
     ]).start();
     this.spin = this.state.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ["0deg", "360deg"],
+      outputRange: ['0deg', '360deg'],
     });
   }
 
@@ -51,8 +51,7 @@ class EnlargeShrink extends React.Component {
           },
           { transform: [{ rotate: this.spin }] },
           styles.container,
-        ]}
-      >
+        ]}>
         {this.props.children}
       </Animated.View>
     );
@@ -61,9 +60,9 @@ class EnlargeShrink extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    top: Dimensions.get("window").height / 1.9, // TODO : Bien centrer Panpan
-    alignSelf: "center",
+    position: 'absolute',
+    top: Dimensions.get('window').height / 1.9, // TODO : Bien centrer Panpan
+    alignSelf: 'center',
   },
 });
 

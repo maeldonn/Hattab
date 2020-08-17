@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   StyleSheet,
   Image,
@@ -6,29 +6,31 @@ import {
   Alert,
   Platform,
   ToastAndroid,
-} from 'react-native'
+} from 'react-native';
 
-import EnlargeShrink from '../Animations/EnlargeShrink'
+import PropTypes from 'prop-types';
 
-import SendSMS from 'react-native-sms-x'
-import RNImmediatePhoneCall from 'react-native-immediate-phone-call'
+import EnlargeShrink from '../Animations/EnlargeShrink';
+
+import SendSMS from 'react-native-sms-x';
+import RNImmediatePhoneCall from 'react-native-immediate-phone-call';
 
 class FamilyIcon extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       shouldEnlarge: false,
-    }
+    };
   }
 
   _sendMessage() {
     if (Platform.OS === 'android') {
       // TODO : Demander permission à l'utilisateur pour android récent
-      SendSMS.send(5, this.props.number, 'HATTAB ! On mange.', () => {})
+      SendSMS.send(5, this.props.number, 'HATTAB ! On mange.', () => {});
       ToastAndroid.show(
         'Message envoyé à ' + this.props.name + '.',
         ToastAndroid.LONG
-      )
+      );
     } else {
       // TODO : Traiter l'envoie de message sur ios
       Alert.alert(
@@ -38,58 +40,64 @@ class FamilyIcon extends React.Component {
         {
           cancelable: false,
         }
-      )
+      );
     }
   }
 
   _call() {
     if (Platform.OS === 'android') {
-      RNImmediatePhoneCall.immediatePhoneCall(this.props.number)
+      RNImmediatePhoneCall.immediatePhoneCall(this.props.number);
     } else {
       // TODO : Traiter les appels sur ios
     }
   }
 
   _doAction() {
-    this._toggleShouldEnlarge()
+    this._toggleShouldEnlarge();
     setTimeout(() => {
-      this._toggleShouldEnlarge()
-    }, 1000)
+      this._toggleShouldEnlarge();
+    }, 1000);
     switch (this.props.type) {
       case 'call':
-        this._call()
-        break
+        this._call();
+        break;
       case 'message':
-        this._sendMessage()
-        break
+        this._sendMessage();
+        break;
       default:
-        break
+        break;
     }
   }
 
   _toggleShouldEnlarge = () => {
-    const shouldEnlarge = this.state.shouldEnlarge
+    const shouldEnlarge = this.state.shouldEnlarge;
     if (shouldEnlarge == true) {
-      this.setState({ shouldEnlarge: false })
+      this.setState({ shouldEnlarge: false });
     } else {
-      this.setState({ shouldEnlarge: true })
+      this.setState({ shouldEnlarge: true });
     }
-  }
+  };
 
   render() {
-    const { image } = this.props
+    const { image } = this.props;
     return (
       <EnlargeShrink shouldEnlarge={this.state.shouldEnlarge}>
         <TouchableOpacity
           style={styles.container}
-          onPress={() => this._doAction()}
-        >
+          onPress={() => this._doAction()}>
           <Image source={image} style={styles.image} />
         </TouchableOpacity>
       </EnlargeShrink>
-    )
+    );
   }
 }
+
+FamilyIcon.propTypes = {
+  image: PropTypes.number.isRequired,
+  number: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
@@ -101,6 +109,6 @@ const styles = StyleSheet.create({
     borderColor: '#000000',
     borderWidth: 5,
   },
-})
+});
 
-export default FamilyIcon
+export default FamilyIcon;

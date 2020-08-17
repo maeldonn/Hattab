@@ -1,5 +1,5 @@
-import React from "react";
-import { Animated, Dimensions } from "react-native";
+import React from 'react';
+import { Animated, Dimensions } from 'react-native';
 
 class EnlargeShrink extends React.Component {
   constructor(props) {
@@ -11,9 +11,9 @@ class EnlargeShrink extends React.Component {
 
   _getSize() {
     if (this.props.shouldEnlarge) {
-      return Dimensions.get("window").width / 2;
+      return Dimensions.get('window').width / 2;
     }
-    return Dimensions.get("window").width / 2.6;
+    return Dimensions.get('window').width / 2.6;
   }
 
   componentDidUpdate() {
@@ -26,8 +26,10 @@ class EnlargeShrink extends React.Component {
   render() {
     return (
       <Animated.View
-        style={{ width: this.state.viewSize, height: this.state.viewSize }}
-      >
+        style={{
+          width: this.state.viewSize,
+          height: this.state.viewSize,
+        }}>
         {this.props.children}
       </Animated.View>
     );
