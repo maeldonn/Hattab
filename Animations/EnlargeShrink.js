@@ -1,39 +1,50 @@
 import React from 'react';
 import { Animated, Dimensions } from 'react-native';
+import PropTypes from 'prop-types';
 
 class EnlargeShrink extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewSize: new Animated.Value(this._getSize()),
+      viewSize: new Animated.Value(this.getSize()),
     };
   }
 
-  _getSize() {
-    if (this.props.shouldEnlarge) {
+  componentDidUpdate() {
+    const { viewSize } = this.state;
+    Animated.spring(viewSize, {
+      toValue: this.getSize(),
+      useNativeDriver: false,
+    }).start();
+  }
+
+  getSize() {
+    const { shouldEnlarge } = this.props;
+    if (shouldEnlarge) {
       return Dimensions.get('window').width / 2;
     }
     return Dimensions.get('window').width / 2.6;
   }
 
-  componentDidUpdate() {
-    Animated.spring(this.state.viewSize, {
-      toValue: this._getSize(),
-      useNativeDriver: false,
-    }).start();
-  }
-
   render() {
+    const { viewSize } = this.state;
+    const { children } = this.props;
     return (
       <Animated.View
         style={{
-          width: this.state.viewSize,
-          height: this.state.viewSize,
-        }}>
-        {this.props.children}
+          width: viewSize,
+          height: viewSize,
+        }}
+      >
+        {children}
       </Animated.View>
     );
   }
 }
+
+EnlargeShrink.propTypes = {
+  shouldEnlarge: PropTypes.bool.isRequired,
+  children: PropTypes.element.isRequired,
+};
 
 export default EnlargeShrink;

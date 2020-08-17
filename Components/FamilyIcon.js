@@ -10,10 +10,9 @@ import {
 
 import PropTypes from 'prop-types';
 
-import EnlargeShrink from '../Animations/EnlargeShrink';
-
 import SendSMS from 'react-native-sms-x';
 import RNImmediatePhoneCall from 'react-native-immediate-phone-call';
+import EnlargeShrink from '../Animations/EnlargeShrink';
 
 class FamilyIcon extends React.Component {
   constructor(props) {
@@ -23,68 +22,65 @@ class FamilyIcon extends React.Component {
     };
   }
 
-  _sendMessage() {
-    if (Platform.OS === 'android') {
-      // TODO : Demander permission à l'utilisateur pour android récent
-      SendSMS.send(5, this.props.number, 'HATTAB ! On mange.', () => {});
-      ToastAndroid.show(
-        'Message envoyé à ' + this.props.name + '.',
-        ToastAndroid.LONG
-      );
-    } else {
-      // TODO : Traiter l'envoie de message sur ios
-      Alert.alert(
-        'Message envoyé à ' + this.props.name + '.',
-        '',
-        [{ text: 'OK' }],
-        {
-          cancelable: false,
-        }
-      );
-    }
-  }
-
-  _call() {
-    if (Platform.OS === 'android') {
-      RNImmediatePhoneCall.immediatePhoneCall(this.props.number);
-    } else {
-      // TODO : Traiter les appels sur ios
-    }
-  }
-
-  _doAction() {
-    this._toggleShouldEnlarge();
-    setTimeout(() => {
-      this._toggleShouldEnlarge();
-    }, 1000);
-    switch (this.props.type) {
-      case 'call':
-        this._call();
-        break;
-      case 'message':
-        this._sendMessage();
-        break;
-      default:
-        break;
-    }
-  }
-
-  _toggleShouldEnlarge = () => {
-    const shouldEnlarge = this.state.shouldEnlarge;
-    if (shouldEnlarge == true) {
+  toggleShouldEnlarge = () => {
+    const { shouldEnlarge } = this.state;
+    if (shouldEnlarge === true) {
       this.setState({ shouldEnlarge: false });
     } else {
       this.setState({ shouldEnlarge: true });
     }
   };
 
+  doAction() {
+    const { type } = this.props;
+    this.toggleShouldEnlarge();
+    setTimeout(() => {
+      this.toggleShouldEnlarge();
+    }, 1000);
+    switch (type) {
+      case 'call':
+        this.call();
+        break;
+      case 'message':
+        this.sendMessage();
+        break;
+      default:
+        break;
+    }
+  }
+
+  call() {
+    const { number } = this.props;
+    if (Platform.OS === 'android') {
+      RNImmediatePhoneCall.immediatePhoneCall(number);
+    } else {
+      // TODO : Traiter les appels sur ios
+    }
+  }
+
+  sendMessage() {
+    const { number, name } = this.props;
+    if (Platform.OS === 'android') {
+      // TODO : Demander permission à l'utilisateur pour android récent
+      SendSMS.send(5, number, 'HATTAB ! On mange.', () => {});
+      ToastAndroid.show(`Message envoyé à ${name}.`, ToastAndroid.LONG);
+    } else {
+      // TODO : Traiter l'envoie de message sur ios
+      Alert.alert(`Message envoyé à ${name}.`, '', [{ text: 'OK' }], {
+        cancelable: false,
+      });
+    }
+  }
+
   render() {
     const { image } = this.props;
+    const { shouldEnlarge } = this.state;
     return (
-      <EnlargeShrink shouldEnlarge={this.state.shouldEnlarge}>
+      <EnlargeShrink shouldEnlarge={shouldEnlarge}>
         <TouchableOpacity
           style={styles.container}
-          onPress={() => this._doAction()}>
+          onPress={() => this.doAction()}
+        >
           <Image source={image} style={styles.image} />
         </TouchableOpacity>
       </EnlargeShrink>

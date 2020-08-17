@@ -9,23 +9,21 @@
 * L'animation de Panpan est cassée ❌
 * Passer le composant qui s'anim au premier 
 plan (confilt panpan) ❌
+* Corriger Splashscreen sur Android ❌
 
 -----------------
 --   A FAIRE   --
 -----------------
 
-* Ajouter un splash screen ❌
-* Prettier avec react
 * Corriger erreur eslint ❌
+* Fusionner les deux animations ❌
 * Appel et sms pour ios ❌
 * Demander permission ( react native 
 permissions voir les issues de sms) ❌
-
---------------------
---   A VERIFIER   --
---------------------
-
 * Panpan est bien centré ❌
+
+
+
 
 Légende :
 
