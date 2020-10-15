@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { NUM1, NUM2, NUM3, NUM4 } from 'react-native-dotenv';
 
 import FamilyIcon from './FamilyIcon';
 
@@ -27,29 +28,29 @@ class FamilyGrid extends React.Component {
         <View style={styles.grid}>
           <View style={styles.first_row}>
             <FamilyIcon
-              image={require('../Images/ic_mael.jpeg')}
-              number="0686045973"
-              name="Maël"
+              image={require('../Images/ic_user.png')} // Replace path
+              number={NUM1}
+              name="User 1" // Replace name
               type={type}
             />
             <FamilyIcon
-              image={require('../Images/ic_nolwenn.jpeg')}
-              number="0786928037"
-              name="Nolwenn"
+              image={require('../Images/ic_user.png')} // Replace path
+              number={NUM2}
+              name="User 2" // Replace name
               type={type}
             />
           </View>
           <View style={styles.second_row}>
             <FamilyIcon
-              image={require('../Images/ic_armel.jpeg')}
-              number="0640187857"
-              name="Armel"
+              image={require('../Images/ic_user.png')} // Replace path
+              number={NUM3}
+              name="User 3" // Replace name
               type={type}
             />
             <FamilyIcon
-              image={require('../Images/ic_patrick.jpeg')}
-              number="0684506138"
-              name="Patrick"
+              image={require('../Images/ic_user.png')} // Replace path
+              number={NUM4}
+              name="User 4" // Replace name
               type={type}
             />
           </View>

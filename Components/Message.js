@@ -9,6 +9,7 @@ import {
   ToastAndroid,
 } from 'react-native';
 import SendSMS from 'react-native-sms-x';
+import { NUM1, NUM2, NUM3, NUM4 } from 'react-native-dotenv';
 
 import FamilyGrid from './FamilyGrid';
 import PanPanAnimation from '../Animations/PanpanAnimation';
@@ -37,10 +38,10 @@ class Message extends React.Component {
     }, 1000);
     if (Platform.OS === 'android') {
       // TODO : Demander permission à l'utilisateur pour android récent
-      SendSMS.send(1, '0686045973', 'HATTAB ! On mange.', () => {});
-      SendSMS.send(2, '0786928037', 'HATTAB ! On mange.', () => {});
-      SendSMS.send(3, '0640187857', 'HATTAB ! On mange.', () => {});
-      SendSMS.send(4, '0684506138', 'HATTAB ! On mange.', () => {});
+      SendSMS.send(1, NUM1, 'HATTAB ! On mange.', () => {});
+      SendSMS.send(2, NUM2, 'HATTAB ! On mange.', () => {});
+      SendSMS.send(3, NUM3, 'HATTAB ! On mange.', () => {});
+      SendSMS.send(4, NUM4, 'HATTAB ! On mange.', () => {});
       ToastAndroid.show(
         'Messages envoyés à toute la famille.',
         ToastAndroid.LONG
@@ -67,7 +68,7 @@ class Message extends React.Component {
           onPress={() => this.sendMessagetoAll()}
         >
           <Image
-            source={require('../Images/ic_panpan.jpeg')}
+            source={require('../Images/ic_user.png')} // Replace path
             style={styles.image}
           />
         </TouchableOpacity>
